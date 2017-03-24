@@ -561,7 +561,7 @@ export default class extends Component {
         </ScrollView>
        )
     }
-    if(this.props.useListViw) {
+    if(this.props.useListView) {
       <ScrollView ref='scrollView'
           {...this.props}
           contentContainerStyle={[styles.wrapper, this.props.style]}

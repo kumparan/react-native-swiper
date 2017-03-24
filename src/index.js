@@ -122,7 +122,8 @@ export default class extends Component {
     dotStyle: PropTypes.object,
     activeDotStyle: PropTypes.object,
     dotColor: PropTypes.string,
-    activeDotColor: PropTypes.string
+    activeDotColor: PropTypes.string,
+    useListView: PropTypes.bool,
   }
 
   /**
@@ -147,7 +148,8 @@ export default class extends Component {
     autoplay: false,
     autoplayTimeout: 2.5,
     autoplayDirection: true,
-    index: 0
+    index: 0,
+    useListView: false,
   }
 
   /**
@@ -558,6 +560,17 @@ export default class extends Component {
           {pages}
         </ScrollView>
        )
+    }
+    if(this.props.useListViw) {
+      <ScrollView ref='scrollView'
+          {...this.props}
+          contentContainerStyle={[styles.wrapper, this.props.style]}
+          contentOffset={this.state.offset}
+          onScrollBeginDrag={this.onScrollBegin}
+          onMomentumScrollEnd={this.onScrollEnd}
+          onScrollEndDrag={this.onScrollEndDrag}>
+          {pages}
+        </ScrollView>
     }
     return (
       <ViewPagerAndroid ref='scrollView'

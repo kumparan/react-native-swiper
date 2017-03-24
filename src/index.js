@@ -559,10 +559,11 @@ export default class extends Component {
           onScrollEndDrag={this.onScrollEndDrag}>
           {pages}
         </ScrollView>
-       )
+       );
     }
     if(this.props.useListView) {
-      <ScrollView ref='scrollView'
+      return (
+       <ScrollView ref='scrollView'
           {...this.props}
           contentContainerStyle={[styles.wrapper, this.props.style]}
           contentOffset={this.state.offset}
@@ -570,7 +571,8 @@ export default class extends Component {
           onMomentumScrollEnd={this.onScrollEnd}
           onScrollEndDrag={this.onScrollEndDrag}>
           {pages}
-        </ScrollView>
+        </ScrollView> 
+      );
     }
     return (
       <ViewPagerAndroid ref='scrollView'
@@ -580,7 +582,7 @@ export default class extends Component {
         style={{flex: 1}}>
         {pages}
       </ViewPagerAndroid>
-    )
+    );
   }
 
   /**

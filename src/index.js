@@ -396,7 +396,8 @@ export default class extends Component {
     if (state.dir === 'y') y = diff * state.height
 
     if (Platform.OS === 'android') {
-      this.refs.scrollView && this.refs.scrollView[animated ? 'setPage' : 'setPageWithoutAnimation'](diff)
+      let setPage = animated ? 'setPage' : 'setPageWithoutAnimation';
+      this.refs.scrollView && this.refs.scrollView[setPage](diff)
     } else {
       this.refs.scrollView && this.refs.scrollView.scrollTo({ x, y, animated })
     }

@@ -395,7 +395,7 @@ export default class extends Component {
     if (state.dir === 'x') x = diff * state.width
     if (state.dir === 'y') y = diff * state.height
 
-    if (Platform.OS === 'android') {
+    if (Platform.OS === 'android' && this.androidScrollType === 2) {
       let setPage = animated ? 'setPage' : 'setPageWithoutAnimation';
       this.refs.scrollView && this.refs.scrollView[setPage](diff)
     } else {
@@ -563,6 +563,7 @@ export default class extends Component {
        );
     }
     if(this.props.useListView) {
+      this.androidScrollType = 1;
       return (
        <ScrollView ref='scrollView'
           {...this.props}
@@ -572,9 +573,10 @@ export default class extends Component {
           onMomentumScrollEnd={this.onScrollEnd}
           onScrollEndDrag={this.onScrollEndDrag}>
           {pages}
-        </ScrollView> 
+        </ScrollView>
       );
     }
+    this.androidScrollType = 2;
     return (
       <ViewPagerAndroid ref='scrollView'
         {...this.props}
